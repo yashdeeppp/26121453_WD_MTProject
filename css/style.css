@@ -12,7 +12,7 @@
 :root {
     --primary: #b4471f;        /* terracotta: buttons, headings, links */
     --primary-dark: #8f3517;   /* darker terracotta for hover states */
-    --accent: #e9a23b;         /* mustard: highlights and underlines */
+    --accent: #e9a23b;         /* mustard: borders and accents */
     --background: #fdf6ec;     /* cream: main page background */
     --background-alt: #f6e6d0; /* sand: alternate section background */
     --card: #ffffff;           /* white card background */
@@ -51,7 +51,7 @@ h1, h2, h3 {
     margin: 0 0 0.6rem;
 }
 
-h1 { font-size: 3.2rem; }
+h1 { font-size: 3.2rem; color: var(--text); }
 h2 { font-size: 2.2rem; }
 h3 { font-size: 1.35rem; }
 
@@ -81,11 +81,10 @@ img {
     height: auto;
 }
 
-/* Highlighted words inside text (the span tags in the HTML) */
+/* Highlighted words inside text (the span tags in the HTML): colour and bold only */
 .highlight {
     color: var(--primary);
     font-weight: 700;
-    background-image: linear-gradient(transparent 65%, var(--accent) 65%);
 }
 
 /* Keeps content centred and not too wide */
