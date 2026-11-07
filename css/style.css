@@ -492,7 +492,7 @@ footer a:hover {
 @media print {
     /* Slightly smaller text and spacing so the resume fits on two pages */
     html {
-        font-size: 74%;
+        font-size: 71%;
     }
 
     /* Keep the background colours and the photo border in the PDF */
@@ -536,6 +536,12 @@ footer a:hover {
 
     .section-title {
         margin-bottom: 1.2rem;
+    }
+
+    /* Three cards per row so the Experience section stays short */
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
     }
 
     /* Slimmer table rows and footer */
