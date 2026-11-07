@@ -1,0 +1,482 @@
+/* ==========================================================
+   YASHDEEP ZALA | RESUME WEBSITE STYLESHEET
+   Mood: warm and creative
+   Sections: 1 Variables, 2 Base, 3 Navbar, 4 Hero, 5 Sections,
+             6 Cards, 7 Table and Skills, 8 Forms, 9 Footer,
+             10 Responsive
+   ========================================================== */
+
+
+/* ---------- 1. VARIABLES (colour palette and fonts) ---------- */
+/* Warm terracotta and mustard on a cream background. */
+:root {
+    --primary: #b4471f;        /* terracotta: buttons, headings, links */
+    --primary-dark: #8f3517;   /* darker terracotta for hover states */
+    --accent: #e9a23b;         /* mustard: highlights and underlines */
+    --background: #fdf6ec;     /* cream: main page background */
+    --background-alt: #f6e6d0; /* sand: alternate section background */
+    --card: #ffffff;           /* white card background */
+    --text: #3b2a24;           /* deep brown: body text */
+    --text-light: #6e5a50;     /* softer brown: small details */
+
+    --heading-font: "Playfair Display", Georgia, serif;
+    --body-font: "Nunito", Arial, sans-serif;
+}
+
+
+/* ---------- 2. BASE STYLES ---------- */
+/* box-sizing: border-box makes padding and border count inside the width. */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* smooth jump when a nav link is clicked */
+}
+
+body {
+    margin: 0;
+    font-family: var(--body-font);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text);
+    background-color: var(--background);
+}
+
+/* Heading hierarchy: h1 biggest, h3 smallest */
+h1, h2, h3 {
+    font-family: var(--heading-font);
+    color: var(--primary);
+    line-height: 1.25;
+    margin: 0 0 0.6rem;
+}
+
+h1 { font-size: 3.2rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.35rem; }
+
+p {
+    margin: 0 0 1rem;
+}
+
+a {
+    color: var(--primary);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* Visible outline when someone tabs through links and fields */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Highlighted words inside text (the span tags in the HTML) */
+.highlight {
+    color: var(--primary);
+    font-weight: 700;
+    background-image: linear-gradient(transparent 65%, var(--accent) 65%);
+}
+
+/* Keeps content centred and not too wide */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+
+/* ---------- 3. NAVBAR ---------- */
+/* ID selector: there is only one navbar. Sticky keeps it at the top while scrolling. */
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--card);
+    border-bottom: 3px solid var(--accent);
+}
+
+/* Flexbox puts the logo on the left and the links on the right */
+#navbar nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0.8rem 1.5rem;
+}
+
+.logo {
+    font-family: var(--heading-font);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Combined selector: only links inside the nav list */
+.nav-links a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text);
+    padding: 0.3rem 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+
+/* ---------- 4. HERO ---------- */
+/* ID selector: the hero is unique on the page */
+#hero {
+    background-color: var(--background);
+    padding: 5rem 0;
+}
+
+/* Flexbox row: text on the left, photo on the right */
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-small {
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.3rem;
+}
+
+.headline {
+    font-size: 1.6rem;
+    color: var(--text);
+}
+
+.button-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.hero-photo img {
+    display: block;
+    border-radius: 50%;           /* makes the photo a circle */
+    border: 6px solid var(--accent);
+    object-fit: cover;
+    background-color: var(--background-alt); /* shows while the photo is missing */
+}
+
+/* Buttons (used in the hero and the form) */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    border: 2px solid var(--primary);
+    border-radius: 30px;
+    font-family: var(--body-font);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+
+/* ---------- 5. SECTIONS ---------- */
+/* Every section gets the same generous spacing */
+.section {
+    padding: 5rem 0;
+}
+
+/* Alternate background colour between sections */
+.section-light {
+    background-color: var(--background-alt);
+}
+
+/* Section headings get a short accent underline */
+.section-title {
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 4px solid var(--accent);
+    display: inline-block;
+}
+
+/* About: flexbox row with the text and the quick facts box */
+.about-layout {
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;
+}
+
+.about-text {
+    flex: 2;
+}
+
+.quick-facts {
+    flex: 1;
+    background-color: var(--card);
+    border-left: 5px solid var(--primary);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.quick-facts ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.quick-facts li {
+    margin-bottom: 0.6rem;
+}
+
+
+/* ---------- 6. CARDS ---------- */
+/* Grid makes a neat card layout that wraps by itself */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.8rem;
+}
+
+.card {
+    background-color: var(--card);
+    border: 1px solid #ecd9bf;
+    border-top: 5px solid var(--primary);
+    border-radius: 10px;
+    padding: 1.6rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effect: the card lifts up slightly */
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 22px rgba(59, 42, 36, 0.15);
+}
+
+/* Combined selector: lists and the small meta line inside cards */
+.card ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.card .meta {
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+
+/* ---------- 7. TABLE AND SKILLS ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid #ecd9bf;
+}
+
+th {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
+/* Row hover effect */
+tbody tr:hover {
+    background-color: var(--background);
+}
+
+/* Skills shown as rounded pills in a flexbox row */
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.skill-list li {
+    background-color: var(--card);
+    border: 2px solid var(--accent);
+    border-radius: 30px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.skill-list li:hover {
+    background-color: var(--accent);
+}
+
+
+/* ---------- 8. FORMS ---------- */
+/* Contact section: info on the left, form on the right */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.contact-info ul {
+    padding-left: 1.2rem;
+}
+
+form {
+    background-color: var(--card);
+    border: 1px solid #ecd9bf;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+input,
+textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.2rem;
+    padding: 0.7rem;
+    font-family: var(--body-font);
+    font-size: 1rem;
+    color: var(--text);
+    border: 2px solid #d9c3a5;
+    border-radius: 6px;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--primary);
+}
+
+
+/* ---------- 9. FOOTER ---------- */
+footer {
+    background-color: var(--text);
+    color: var(--background);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-top: 5px solid var(--accent);
+}
+
+footer p {
+    margin: 0.3rem 0;
+}
+
+footer a {
+    color: var(--accent);
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+
+/* ---------- 10. RESPONSIVE (mobile layout) ---------- */
+/* Applies when the screen is 800px wide or smaller */
+@media (max-width: 800px) {
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 1.8rem; }
+
+    #navbar nav {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem 1.1rem;
+    }
+
+    #hero {
+        padding: 3rem 0;
+    }
+
+    /* Stack the photo above the text */
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-photo img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .button-row {
+        justify-content: center;
+    }
+
+    .about-layout {
+        flex-direction: column;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 3.5rem 0;
+    }
+}
