@@ -3,7 +3,7 @@
    Mood: warm and creative
    Sections: 1 Variables, 2 Base, 3 Navbar, 4 Hero, 5 Sections,
              6 Cards, 7 Table and Skills, 8 Forms, 9 Footer,
-             10 Responsive
+             10 Responsive, 11 Print
    ========================================================== */
 
 
@@ -285,7 +285,7 @@ img {
 /* Grid makes a neat card layout that wraps by itself */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1.8rem;
 }
 
@@ -478,5 +478,82 @@ footer a:hover {
 
     .section {
         padding: 3.5rem 0;
+    }
+}
+
+
+/* ---------- 11. PRINT (used when the page is saved as a PDF) ---------- */
+/* Hides the parts that only make sense on a screen and keeps cards together. */
+@page {
+    size: A4;
+    margin: 12mm;
+}
+
+@media print {
+    /* Slightly smaller text and spacing so the resume fits on two pages */
+    html {
+        font-size: 74%;
+    }
+
+    /* Keep the background colours and the photo border in the PDF */
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Hide the navbar, hero buttons, contact form and "back to top" link */
+    #navbar,
+    .button-row,
+    form,
+    footer p:last-child {
+        display: none;
+    }
+
+    /* Keep the hero side by side and the contact section in one column */
+    .hero-content {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .hero-photo img {
+        width: 190px;
+        height: 190px;
+    }
+
+    .about-layout {
+        flex-direction: row;
+    }
+
+    .contact-layout {
+        display: block;
+    }
+
+    /* Tighter spacing so the whole resume fits on two pages */
+    #hero,
+    .section {
+        padding: 1rem 0;
+    }
+
+    .section-title {
+        margin-bottom: 1.2rem;
+    }
+
+    /* Slimmer table rows and footer */
+    th,
+    td {
+        padding: 0.6rem 1rem;
+    }
+
+    footer {
+        padding: 0.8rem 1.5rem;
+    }
+
+    /* Do not split a section, card or table row across two pages */
+    #hero,
+    .section,
+    footer,
+    .card,
+    tr {
+        break-inside: avoid;
     }
 }
